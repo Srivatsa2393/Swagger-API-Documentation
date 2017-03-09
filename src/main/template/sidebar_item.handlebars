@@ -1,0 +1,7 @@
+{{!-- only output author name if an author exists --}}
+ {{#if summary}}
+   <span>{{summary}}</span>
+ {{else}}
+   <span> {{operationId}}</span>
+ {{/if}}
+

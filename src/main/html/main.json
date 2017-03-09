@@ -1,0 +1,673 @@
+[
+  {"tag":"title","html":"Interact API"},
+  {"tag":"meta","name":"viewport","content":"width=device-width, initial-scale=1.0","html":""},
+  {"tag":"link","rel":"icon","type":"image/png","href":"images/favicon-32x32.png","sizes":"32x32","html":""},
+  {"tag":"link","href":"css/main.css","rel":"stylesheet","html":""},
+  {"tag":"link","href":"css/api-explorer.css","rel":"stylesheet","type":"text/css","html":""},
+  {"tag":"link","href":"css/standalone.css","rel":"stylesheet","html":""},
+  {"tag":"style","html":"
+    .modalDialog {
+        position: fixed;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        /*background: rgba(10,100,45,0.8);*/
+        background: #e6e6e6;
+        z-index: 99999;
+        opacity:0;
+        -webkit-transition: opacity 400ms ease-in;
+        -moz-transition: opacity 400ms ease-in;
+        transition: opacity 400ms ease-in;
+        pointer-events: none;
+    }
+
+    .modalDialog:target {
+        opacity:1;
+        pointer-events: auto;
+    }
+
+    .modalDialog > div {
+        width: 600px;
+        position: relative;
+        margin: 10% auto;
+        padding: 5px 20px 13px 20px;
+        border-radius: 10px;
+        background: #ffccff;
+        background: -moz-linear-gradient(#fff, #ffccff);
+        background: -webkit-linear-gradient(#fff, #ffccff);
+        background: -o-linear-gradient(#fff, #ffccff);
+    }
+
+    .close {
+        /*background: #606061;*/
+        background: #ffff99;
+        color: #FFFFFF;
+        line-height: 25px;
+        position: absolute;
+        right: -2px;
+        text-align: center;
+        top: -4px;
+        width: 26px;
+        text-decoration: none;
+        font-weight: bold;
+        -webkit-border-radius: 12px;
+        -moz-border-radius: 12px;
+        border-radius: 12px;
+        -moz-box-shadow: 1px 1px 3px #000;
+        -webkit-box-shadow: 1px 1px 3px #000;
+        box-shadow: 1px 1px 3px #000;
+    }
+
+    .close:hover { background: #ff0000; }
+    
+    body {
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+    font-family: "proxima-nova", "Helvetica Neue", sans-serif;
+    color: #4d4d4d;
+}
+body{
+    background-color: #fff; 
+}
+body {
+    margin: 0;
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body{
+    background: url("../images/mob4.jpg") center left no-repeat;
+    background-size: 1400px 800px;
+    background-repeat:no-repeat;
+}
+
+header.site-header.site-header {
+    z-index: 1000;
+    background: transparent;
+    font-size: 14px;
+    position: static;
+}
+header{
+    display: block;
+}
+
+header.site-header.site-header nav {
+    background: none;
+    border: 0;
+    margin: 0;
+}
+@media (min-width: 768px)
+.navbar {
+    border-radius: 4px;
+}
+.navbar {
+    position: relative;
+    min-height: 50px;
+}
+
+header.site-header.site-header {
+    font-size: 14px;
+}    
+
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+    
+@media (min-width: 992px)
+header.site-header.site-header .navbar-header {
+    margin-right: 0;
+    margin-left: 0;
+    float: left;
+}
+
+header.site-header.site-header .navbar-header{
+    padding-bottom: 5px;
+}        
+
+@media (min-width: 992px)
+header.site-header.site-header .navbar-toggle {
+    display: none;
+}
+
+header.site-header.site-header .navbar-toggle {
+    border: 0;
+}
+.navbar-toggle {
+    position: relative;
+    float: right;
+    padding: 9px 10px;
+    margin-top: 8px;
+    margin-right: 15px;
+    margin-bottom: 8px;
+    background-color: transparent;
+    background-image: none;
+    border-radius: 4px;
+}  
+
+button{
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}  
+button{
+    -webkit-appearance: button;
+    cursor: pointer;
+}
+button{
+        text-transform: none;
+}
+button {
+    overflow: visible;
+}
+button{
+    margin: 0;
+    font: inherit;
+    color: inherit;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+header.site-header.site-header nav .navbar-brand {
+    font-weight: bold;
+    /*margin: 0;*/
+    display: inline-block;
+    float: left;
+    font-size: 24px;
+    margin-right: 20px;
+    color: #000;
+    padding: 0 15px 0 15px;
+    margin: 0;
+    width: 120px;
+}
+.navbar-brand{
+    line-height: 20px;
+}
+
+header.site-header.site-header nav .navbar-brand a {
+    background: url("../images/interact-logo.png") center left no-repeat;
+    /* background-size: 76%; */
+    width: 200px;
+    height: 30px;
+    display: block;
+    margin-top: 5px;
+    background-size: 48%;
+}
+header.site-header.site-header a {
+    color: #333;
+}
+h1 a{
+    font-weight: 300;
+}
+
+#navbar-collapse {
+    background-color: white;
+}
+
+#title {
+    font-size: 25px;
+    padding: auto;
+    padding-left: 20px;
+    /* padding-top: 20px; */
+}
+a {
+    text-decoration: none;
+}
+
+#nav-wrap {
+    width: auto;
+    margin: 0 auto;
+     /*padding-left: 800px; */
+    text-align: left;
+    font-size: 15px;
+    float: right;
+    padding-top: 0px;
+}
+
+#navbar-collapse ul {
+    list-style-type: none;
+    padding: 15px;
+    margin: 0px;
+    position: relative;
+}
+
+ul{
+    display: block;
+    /*list-style-type: disc;*/
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 40px;
+}
+
+#nav-wrap {
+    text-align: left;
+    font-size: 15px;
+}
+
+#navbar-collapse ul li {
+    display: inline-block;
+}
+header.site-header.site-header nav li {
+    margin: 0;
+}  
+
+#navbar-collapse ul li a, visited {
+    color: #ccc;
+    display: inline-block;
+    padding: 10px;
+    text-decoration: none;
+}
+a {
+    background-color: transparent;
+}
+*{
+    -webkit-box-sizing: border-box;
+ }  
+ a:-webkit-any-link {
+     cursor: auto;
+ }
+ li {
+    text-align: -webkit-match-parent;
+} 
+
+#navbar-collapse ul ul {
+    display: none;
+    position: relative;
+    background-color: white;
+    border: 0px solid white;
+    border-top: 0;
+    margin-left: 0px;
+    min-width: 100px;
+}
+
+#navbar-collapse ul {
+    list-style-type: none;
+    padding: 15px;
+    margin: 0px;
+    position: relative;
+}       
+
+#navbar-collapse ul ul li {
+    display: block;
+}
+header.site-header.site-header nav li {
+    margin: 0;
+}
+
+#navbar-collapse ul ul li a, visited {
+    color: #000000;
+}
+#navbar-collapse ul li a, visited {
+    color: #ccc;
+    display: inline-block;
+    padding: 10px;
+    text-decoration: none;
+}
+
+h1,h3{
+    margin: 20px 0;
+}
+h1,h3 {
+    font-size: 3rem;
+}
+h1, h2, h3, h4, h5 {
+    line-height: 1.5;
+    font-family: "proxima-nova", "Helvetica Neue", sans-serif;
+    color: #000;
+    font-weight: 400;
+}
+
+#navbar-collapse ul ul li {
+    display: block;
+}
+header.site-header.site-header nav li {
+    margin: 0;
+}
+#navbar-collapse ul {
+    list-style-type: none;
+}
+#navbar-collapse ul ul li a, visited{
+        color: #000000;
+}   
+#navbar-collapse ul li a{
+    display: inline-block;
+    padding: 10px;
+    text-decoration: none;
+} 
+#navbar-collapse{
+    /*background-color: #e6e6ff;*/
+    background-color: #white;
+}
+#title{
+    font-size: 25px;
+    padding: auto;
+    padding-left: 20px;
+    /*padding-top: 20px;*/
+}
+#nav-wrap{
+    width: auto;                              
+    margin: 0 auto;
+    /*padding-left: 800px;*/
+    text-align: left;
+    font-size: 15px;
+    float: right;
+    padding-top:  0px;
+}
+#navbar-collapse ul{
+     list-style-type: none;
+     padding: 15px;
+     margin: 0px;
+     position: relative;
+}
+#navbar-collapse ul li{
+    display: inline-block;
+    color: black;
+}
+#navbar-collapse ul li:hover{
+    background-color: white; 
+}
+#navbar-collapse ul li a,visited{
+     color: #ccc;
+     display: inline-block;
+     padding: 10px;
+     text-decoration: none;
+}
+#navbar-collapse ul li a:hover{
+    color: blue;
+    text-decoration: none;
+}
+#navbar-collapse ul li:hover ul{
+    display: block;
+}
+#navbar-collapse ul ul{
+    display: none;
+    position: relative;
+    background-color: white; 
+    border: 0px solid white;
+    border-top: 0;
+    margin-left: 0px;
+    min-width: 100px;
+}
+#navbar-collapse ul ul li{
+    display: block;
+}
+#navbar-collapse ul ul li a,visited{
+    color: #000000;
+}
+#navbar-collapse ul ul li a:hover{
+    color: green;
+}
+
+
+@media only screen and (max-width: 1525px)
+section.hero {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background: url(../images/hero-mid.jpg) center center no-repeat fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 900px;
+    position: relative;
+}
+        
+
+section.main-width{
+    text-shadow: 1px 1px #333;
+} 
+section{
+    display: block;
+}       
+
+section.main-width div.side-width{
+    padding-top: 160px;
+}
+section.main-width div.side-width {
+    text-align: center;
+}
+.side-width{
+    width: 80%;
+    margin: 0 auto;
+}
+section.main-width h1.left{
+    text-align: left;
+}
+h1 {
+    font: 46px/48px "proxima-nova", "Helvetica Neue", sans-serif;
+}
+h1 {
+    margin: .67em 0;
+}
+section.main-width h2.left{
+    text-align: left;
+}
+h2{
+    letter-spacing: 0.1em;
+}
+h2 {
+    font: 32px/40px HelveticaNeueW01-Thin;
+}
+h2 {
+    display: block;
+    -webkit-margin-before: 0.83em;
+    -webkit-margin-after: 0.83em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+section.main-width h3.left{
+    text-align: left;
+}
+h2{
+    letter-spacing: 0.1em;
+}
+h3 {
+    font: 28px/36px "proxima-nova", "Helvetica Neue", sans-serif;
+}
+.hero-link:visited, .section-link:hover, .section-link:visited {
+    color: green;
+    font-family: HelveticaNeueW01-55Roma;
+}
+.hero-link {
+    font: 28px/36px "proxima-nova", "Helvetica Neue", sans-serif;
+    font-weight: 700;
+    opacity: 1;
+}
+a {
+    background-color: transparent;
+}
+
+section.main-width div.site-width {
+    text-align: center;
+}
+.site-width, .site-width-alt, .site-width-alt-auth, .site-width-support {
+    width: 80%;
+    margin: 0 auto;
+}
+div {
+    display: block;
+}
+
+.group {
+    zoom: 1;
+}
+.slice {
+    padding-left: 150px;
+    margin: 0;
+}
+.slice {
+    clear: both;
+}
+.col:first-child {
+    margin-left: 0;
+}
+.length{
+    width: 100%;
+}
+.col {
+    display: block;
+    margin: 1% 0 1% 1.6%;
+}
+.hero-cta {
+    text-align: left;
+}
+.col{
+    float: left;
+}
+form {
+    display: block;
+    margin-top: 0em;
+}
+.ghost-button {
+    color: red;
+    background-color: #000;
+    background-color: rgba(0,0,0,.1);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+    font-size: 19px;
+}
+.ghost-button, .ghost-button:hover {
+    display: inline-block;
+    padding: 20px;
+    border: 2px solid #fff;
+    outline: 0;
+    width: 100%;
+    min-width: 150px;
+    max-width: 217px;
+    min-height: 59px;
+    text-align: center;
+    text-decoration: none;
+}
+.ghost-button, section ol.workflows li, table {
+    margin-bottom: 20px;
+}
+button, html input[type=button], input[type=reset], input[type=submit] {
+    -webkit-appearance: button;
+    cursor: pointer;
+    border: none;
+}
+button, select {
+    text-transform: none;
+}
+button {
+    overflow: visible;
+}
+button, input, optgroup, select, textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+}   
+    
+    
+    
+    "},
+  {"tag":"header","class":"site-header","children":[
+      {"tag":"nav","role":"navigation","class":"navbar navbar-default","children":[
+          {"tag":"div","class":"container","children":[
+              {"tag":"div","class":"navbar-header","children":[
+                  {"tag":"button","type":"button","data-toggle":"collapse","data-target":"#navbar-collapse","class":"navbar-toggle","children":[
+                      {"tag":"span","class":"sr-only","html":"Toggle navigation"},
+                      {"tag":"span","class":"icon-bar","html":""},
+                      {"tag":"span","class":"icon-bar","html":""},
+                      {"tag":"span","class":"icon-bar","html":""}
+                    ]},
+                  {"tag":"h1","class":"navbar-brand","children":[
+                      {"tag":"a","href":"#","children":[
+                          {"tag":"span","html":"Interact.io"}
+                        ]}
+                    ]}
+                ]},
+              {"tag":"div","id":"navbar-collapse","children":[
+                  {"tag":"span","id":"title","children":[
+                      {"tag":"a","href":"http://localhost:8080/?url=https://internal-api-staging-lb.interact.io/v2/swagger.json#!/adminbilling/verifyCouponCode","html":"Interact API Documentation"}
+                    ]},
+                  {"tag":"div","id":"nav-wrap","children":[
+                      {"tag":"ul","children":[
+                          {"tag":"li","children":[
+                              {"tag":"a","href":"#","html":"How-To's"},
+                              {"tag":"ul","children":[
+                                  {"tag":"li","children":[
+                                      {"tag":"a","href":"#getakey","html":"Get a key"},
+                                      {"tag":"div","id":"getakey","class":"modalDialog","children":[
+                                          {"tag":"div","children":[
+                                              {"tag":"a","href":"#close","title":"Close","class":"close","html":"X"},
+                                              {"tag":"h1","html":"Don't have an account?"},
+                                              {"tag":"h3","html":"Want to test our API's?"},
+                                              {"tag":"h3","children":[
+                                                  {"tag":"a","href":"https://app-staging.leadscore.io/","html":"Leadscore.io"},
+                                                  {"tag":"a","href":"https://mycontacts.io/","html":"myContacts.io"}
+                                                ]}
+                                            ]}
+                                        ]}
+                                    ]},
+                                  {"tag":"li","children":[
+                                      {"tag":"a","href":"http://localhost:8080/getstarted.html","html":"Authorization"}
+                                    ]}
+                                ]}
+                            ]},
+                          {"tag":"li","children":[
+                              {"tag":"a","href":"#","html":"Docs"},
+                              {"tag":"ul","children":[
+                                  {"tag":"li","children":[
+                                      {"tag":"a","href":"http://localhost:8080/?url=https://internal-api-staging-lb.interact.io/v2/swagger.json","html":"Internal API"}
+                                    ]},
+                                  {"tag":"li","children":[
+                                      {"tag":"a","href":"http://localhost:8080/?url=https://inbox-staging-lb.interact.io/swagger.json","html":"Inbox API"}
+                                    ]},
+                                  {"tag":"li","children":[
+                                      {"tag":"a","href":"#","html":"Outbox API"}
+                                    ]},
+                                  {"tag":"li","children":[
+                                      {"tag":"a","href":"#","html":"Statistics API"}
+                                    ]},
+                                  {"tag":"li","children":[
+                                      {"tag":"a","href":"#","html":"Vault API"}
+                                    ]}
+                                ]}
+                            ]},
+                          {"tag":"li","children":[
+                              {"tag":"a","href":"http://localhost:8080/help.html","html":"Help"}
+                            ]}
+                        ]}
+                    ]}
+                ]}
+            ]}
+        ]}
+    ]},
+  {"tag":"section","class":"main-width","children":[
+      {"tag":"div","class":"side-width","children":[
+          {"tag":"h1","class":"left","html":"Interact API Solutions"},
+          {"tag":"h2","class":"left","html":"CRM MicroServices Platform"},
+          {"tag":"h3","class":"left","children":[
+              {"tag":"a","omniture":"{","fields":{"events":"event5","prop5":"technical":"","documentation","evar5":"technical":"","documentation"},"parameter":"bodylink"}"":"","href":"http://localhost:8080/?url=https://internal-api-staging-lb.interact.io/v2/swagger.json","class":"hero-link","html":"technical documentation"},
+              {"tag":"a","omniture":"{ "fields": { "events":"event5", "prop5":"sample code", "eVar5": "sample code" }, "parameter": "BodyLink" }","href":"http://localhost:8080/?url=https://internal-api-staging-lb.interact.io/v2/swagger.json","class":"hero-link","html":"sample code"}
+            ]}
+        ]},
+      {"tag":"div","class":"slice group","children":[
+          {"tag":"div","class":"col length hero-cta","children":[
+              {"tag":"a","class":"ghost-button","href":"http://localhost:8080/?url=https://internal-api-staging-lb.interact.io/v2/swagger.json","html":"Try it"}
+            ]}
+        ]},
+      {"tag":"section","html":"    
+       
+  "}
+    ]}
+]

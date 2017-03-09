@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interact API</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
+ 
+    <link href="css/main.css" rel="stylesheet"/>
+    <link href='css/api-explorer.css' rel='stylesheet' type='text/css'/>
+    <link href='css/standalone.css' rel='stylesheet'/>
+    
+    <style>
+    .modalDialog {
+        position: fixed;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        /*background: rgba(10,100,45,0.8);*/
+        background: #e6e6e6;
+        z-index: 99999;
+        opacity:0;
+        -webkit-transition: opacity 400ms ease-in;
+        -moz-transition: opacity 400ms ease-in;
+        transition: opacity 400ms ease-in;
+        pointer-events: none;
+    }
+
+    .modalDialog:target {
+        opacity:1;
+        pointer-events: auto;
+    }
+
+    .modalDialog > div {
+        width: 600px;
+        position: relative;
+        margin: 10% auto;
+        padding: 5px 20px 13px 20px;
+        border-radius: 10px;
+        background: #ffccff;
+        background: -moz-linear-gradient(#fff, #ffccff);
+        background: -webkit-linear-gradient(#fff, #ffccff);
+        background: -o-linear-gradient(#fff, #ffccff);
+    }
+
+    .close {
+        /*background: #606061;*/
+        background: #ffff99;
+        color: #FFFFFF;
+        line-height: 25px;
+        position: absolute;
+        right: -2px;
+        text-align: center;
+        top: -4px;
+        width: 26px;
+        text-decoration: none;
+        font-weight: bold;
+        -webkit-border-radius: 12px;
+        -moz-border-radius: 12px;
+        border-radius: 12px;
+        -moz-box-shadow: 1px 1px 3px #000;
+        -webkit-box-shadow: 1px 1px 3px #000;
+        box-shadow: 1px 1px 3px #000;
+    }
+
+    .close:hover { background: #ff0000; }
+    </style>
+
+    
+ 
+ </head>
+ <body class="page-docs" style="zoom: 1;">
+     <header class="site-header">
+         <nav role="navigation" class="navbar navbar-default">
+             <div class="container">
+                 <div class="navbar-header">
+                     <button type="button" data-toggle="collapse" data-target="#navbar-collapse" class="navbar-toggle"><span
+                        class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span
+                        class="icon-bar"></span><span class="icon-bar"></span></button>
+                     <h1 class="navbar-brand"><a href="#"><span>Interact.io</span></a></h1>
+                 </div>  
+                 <div id="navbar-collapse">
+                     <span id="title"><a href="http://localhost:8080/?url=https://internal-api-staging-lb.interact.io/v2/swagger.json#!/adminbilling/verifyCouponCode">Interact API Documentation</a></span>
+                <div id="nav-wrap">
+                    <ul>
+                        <li>
+                        <a href="#">How-To's</a>
+                        <ul>
+                           <li><a href="#getakey">Get a key</a>
+                               <div id="getakey" class="modalDialog"> 
+                                   <div>
+                                        <a href="#close" title="Close" class="close">X</a>
+                                        <h1>Don't have an account?</h1>
+                                        <h3>Want to test our API's?</h3>
+                                        <h3>It's simple and easy log into<a href="https://app-staging.leadscore.io/" style="text-decoration: underline;">Leadscore.io</a>or<a href="https://mycontacts.io/" style="text-decoration: underline;">myContacts.io</a>and test our API's!!!</h3>
+                                   </div>  
+                               </div>
+                           </li> 
+                           <li><a href="http://localhost:8080/getstarted.html">Authorization</a></li>
+                        </ul>    
+                        </li><li>
+                        <a href="#">Docs</a>
+                            <ul>
+                                <li><a href="/?url=https://internal-api-staging-lb.interact.io/v2/swagger.json">Internal API</a></li>
+                                <li><a href="/?url=https://inbox-staging-lb.interact.io/swagger.json">Inbox API</a></li><li>
+                                <a href="/?url=https://outbox-staging-lb.interact.io/swagger.json">Outbox API</a></li><li>
+                                <a href="/?url=https://stats-api-v1-staging.interact.io/swagger.json">Statistics API</a></li><li>
+                                <a href="/?url=https://vault-staging-lb.interact.io/api/swagger.json">Vault API</a></li>
+                            </ul>    
+                        </li><li>    
+                        <a href="http://localhost:8080/help.html">Help</a></li>
+                    </ul>    
+                </div>      
+             </div>  
+           </div>  
+         </nav>    
+     </header>   
+     
+     <section class="main-width">
+         <div class="side-width">
+             <h1 class="left">Interact API</h1>
+             <h2 class="left">CRM MicroServices Platform</h2>
+             <h3 class="left">
+             RESTful API's of Interact.io is supported with
+             <a omniture="{"fields":{"events":"event5","prop5":"technical documentation","evar5":"technical documentation"},"parameter":"BodyLink"}"
+             href="http://localhost:8080/?url=https://internal-api-staging-lb.interact.io/v2/swagger.json" class="hero-link">technical documentation</a>
+             ,
+             <a omniture="{ &quot;fields&quot;: { &quot;events&quot;:&quot;event5&quot;, &quot;prop5&quot;:&quot;sample code&quot;, &quot;eVar5&quot;: &quot;sample code&quot; }, &quot;parameter&quot;: &quot;BodyLink&quot; }" 
+             href="http://localhost:8080/?url=https://internal-api-staging-lb.interact.io/v2/swagger.json" class="hero-link">sample code</a>
+             so you can start-up and access quickly.
+         </div>   
+         <!--div class="side-width left"-->
+            <div class="slice group">
+                <div class="col length hero-cta"> 
+                    <!--form action="http://localhost:8080/index.html">
+                        <button omniture="{ &quot;fields&quot;: { &quot;events&quot;:&quot;event5&quot;, &quot;prop5&quot;:&quot;Try It&quot;, &quot;eVar5&quot;: &quot;Try It&quot; }, &quot;parameter&quot;: &quot;BodyLink&quot; }" class="ghost-button">Try It</button>
+                    </form-->
+                    <a class="ghost-button" href="http://localhost:8080/?url=https://internal-api-staging-lb.interact.io/v2/swagger.json">Try it</a>
+                </div>    
+            </div>       
+         <!--/div-->     
+     <section>   
+ </body>      
+ </html> 
